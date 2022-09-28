@@ -1,6 +1,7 @@
 package be.vives.ti.service;
 
 import be.vives.ti.model.MailTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ public class TemplateService {
 
     private MailTemplate mailTemplate;
 
-    public TemplateService(MailTemplate mailTemplate) {
+    public TemplateService(@Qualifier("vivesMailTemplate") MailTemplate mailTemplate) {
         this.mailTemplate = mailTemplate;
     }
 
