@@ -1,9 +1,10 @@
 package be.vives.ti.service;
 
 import be.vives.ti.model.MailTemplate;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-
+@Service
 public class TemplateService {
 
     private MailTemplate mailTemplate;

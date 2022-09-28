@@ -1,5 +1,7 @@
 package be.vives.ti.dao.util;
 
+import org.springframework.stereotype.Component;
+
 import javax.sql.DataSource;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -23,6 +25,7 @@ import java.util.logging.Logger;
  *
  * In het verder vervolg van deze oefening zal via properties de connectionstring naar de dummy-database worden ingeladen
  */
+@Component
 public class DummyDataSource implements DataSource {
     @Override
     public Connection getConnection() throws SQLException {

@@ -2,6 +2,7 @@ package be.vives.ti.dao.util;
 
 import be.vives.ti.model.Student;
 import be.vives.ti.model.Teacher;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
  * Simuleert een database met Student en Teacher gegevens
  * zodat geen connectie moet worden gemaakt met een echte database
  */
+@Component
 public class SchoolDatabaseStub {
 
     private ArrayList<Student> students;
