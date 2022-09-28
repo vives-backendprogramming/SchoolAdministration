@@ -1,6 +1,5 @@
 package be.vives.ti.dao;
 
-import be.vives.ti.dao.util.DummyDataSource;
 import be.vives.ti.dao.util.SchoolDatabaseStub;
 import be.vives.ti.model.Student;
 
@@ -16,9 +15,9 @@ public class StudentDao {
     private DataSource ds;
     private SchoolDatabaseStub db;
 
-    public StudentDao() {
-        this.ds = new DummyDataSource(); // nodig om een connectie op te vragen naar de (niet bestaande) database
-        this.db = new SchoolDatabaseStub(); // simuleert de database
+    public StudentDao(DataSource ds, SchoolDatabaseStub db) {
+        this.ds = ds; // nodig om een connectie op te vragen naar de (niet bestaande) database
+        this.db = db; // simuleert de database
     }
 
     public Student get(int studentId) {
