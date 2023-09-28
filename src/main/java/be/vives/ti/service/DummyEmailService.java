@@ -19,11 +19,11 @@ public class DummyEmailService {
         sb.append("\n");
         sb.append("Send mail");
         sb.append("\n");
-        sb.append("From: " +teacher.getFirstName() + " " + teacher.getLastName());
+        sb.append("From: ").append(teacher.getFirstName()).append(" ").append(teacher.getLastName());
         sb.append("\n");
-        sb.append("To: " + student.getFirstName() + " " + student.getLastName());
+        sb.append("To: ").append(student.getFirstName()).append(" ").append(student.getLastName());
         sb.append("\n");
-        sb.append("Message: " + message);
+        sb.append("Message: ").append(message);
         sb.append("\n");
         sb.append(templateService.getFooter());
         sb.append("\n");
