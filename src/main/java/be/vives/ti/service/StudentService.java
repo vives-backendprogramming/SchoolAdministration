@@ -17,6 +17,10 @@ public class StudentService {
         return studentDao.findAllStudentsFromClass(className);
     }
 
+    public List<Student> findAllStudents() {
+        return studentDao.findAllStudents();
+    }
+
     public Student get(Integer toStudentId) {
         return studentDao.get(toStudentId);
     }
