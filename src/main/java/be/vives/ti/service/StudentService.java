@@ -21,7 +21,7 @@ public class StudentService {
         return studentDao.findAllStudents();
     }
 
-    public Student get(Integer toStudentId) {
+    public Student findById(Integer toStudentId) {
         return studentDao.get(toStudentId);
     }
 }

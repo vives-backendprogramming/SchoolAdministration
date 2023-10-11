@@ -20,7 +20,7 @@ public class TeacherService {
 
     public void sendMessage(Integer fromTeacherId, String message, Integer toStudentId) {
 
-        Student student = studentService.get(toStudentId);
+        Student student = studentService.findById(toStudentId);
         Teacher teacher = teacherDao.get(fromTeacherId);
 
         this.dummyEmailService.sendEmail(teacher, message, student);
