@@ -45,4 +45,16 @@ public class StudentDao {
             return new ArrayList<>();
         }
     }
+
+    public List<Student> findAllStudents() {
+        // dummy code
+        try {
+            Connection connection = ds.getConnection();
+            return db.getStudents();
+        } catch (SQLException e) {
+            // not a great way to manage exceptions
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 }
