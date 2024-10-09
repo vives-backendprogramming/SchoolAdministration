@@ -1,5 +1,6 @@
 package be.vives.ti.dao.util;
 
+
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
  * die instaat om het aanmaken van een connectie naar de fysieke database.
  *
  * We beschikken voor deze applicatie niet over een fysieke database.
- * Meer deze klasse zal het opvragen van een connectie naar de (niet bestaande) database simuleren.
+ * Maar deze klasse zal het opvragen van een connectie naar de (niet bestaande) database simuleren.
  *
  * De DAO (Data Access Object) klasses zijn verantwoordelijk voor het communiceren met de database en
  * zullen dus een instantie van deze klasse nodig hebben om een connectie op te vragen naar de database.
