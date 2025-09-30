@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class SchoolAdminApp {
-    public static void main( String[] args ) {
+    static void main() {
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 
         // get Bean by type

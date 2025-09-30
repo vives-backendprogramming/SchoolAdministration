@@ -15,11 +15,4 @@ public class ApplicationConfiguration {
                 "VIVES - all rights reserved",
                 "vives.jpg");
     }
-
-    @Bean
-    public MailTemplate kuLeuvenMailTemplate(){
-        return new MailTemplate("KULeuven – ontdek jezelf, begin bij de wereld",
-                "all rights reserved - KULeuven",
-                "kuleuven.jpg");
-    }
 }
