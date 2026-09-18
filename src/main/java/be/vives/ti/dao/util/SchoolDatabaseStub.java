@@ -9,8 +9,18 @@ import java.util.ArrayList;
 // Geen aanpassingen nodig in deze klasse
 
 /**
- * Simuleert een database met Student en Teacher gegevens
- * zodat geen connectie moet worden gemaakt met een echte database
+ * BELANGRIJK — wat deze klasse WEL en NIET doet:
+ *
+ * SchoolDatabaseStub IS de "database" voor deze oefening — maar dan volledig in het geheugen,
+ * niet in een echte databank. Er is geen databank, geen SQL en geen bestand
+ * dat wordt uitgelezen of weggeschreven: alle Student- en Teacher-objecten worden hier gewoon hardcoded aangemaakt
+ * in Java-code (zie importStudents() / importTeachers()) en in een ArrayList bijgehouden.
+ *
+ * DummyDataSource (de andere "database"-gerelateerde klasse) simuleert enkel het JDBC-connectiegedeelte
+ * (en geeft nooit echt een Connection terug) — de eigenlijke data zit dus wel degelijk hier, in deze klasse.
+ *
+ * @Component: deze klasse is vanaf deze branch (springcontextaware) een Spring-bean, zodat ze
+ * via constructor injection in StudentDao/TeacherDao kan worden gestoken.
  */
 @Component
 public class SchoolDatabaseStub {
