@@ -8,20 +8,26 @@ import java.sql.SQLFeatureNotSupportedException;
 import java.util.logging.Logger;
 
 /**
- * De klasse DummyDataSource implementeert de interface javax.sql.DataSource, een Java EE interface
- * die instaat om het aanmaken van een connectie naar de fysieke database.
+ * BELANGRIJK — wat deze klasse WEL en NIET doet:
  *
- * We beschikken voor deze applicatie niet over een fysieke database.
- * Maar deze klasse zal het opvragen van een connectie naar de (niet bestaande) database simuleren.
+ * DummyDataSource stelt GEEN echte databankconnectie voor. Er bestaat geen fysieke database:
+ * er wordt nooit iets gelezen van of weggeschreven naar een echte databank via deze klasse.
+ * getConnection() geeft altijd null terug, en dat blijft ook zo doorheen de volledige oefening
+ *  — dat is bewust zo en geen fout.
  *
- * De DAO (Data Access Object) klasses zijn verantwoordelijk voor het communiceren met de database en
- * zullen dus een instantie van deze klasse nodig hebben om een connectie op te vragen naar de database.
- * Het is de methode getConnection() die in de DAO-klasses zal worden aangeroepen om dit gedrag te simuleren.
+ * Waarom implementeert deze klasse dan toch javax.sql.DataSource (de standaard JDBC-interface
+ * die elke echte databankconnectiepool, zoals HikariCP, ook implementeert)?
+ * De DAO-klasses (StudentDao, TeacherDao) zijn geschreven tegen deze standaardinterface, zodat ze
+ * er precies hetzelfde uitzien als DAO's die later in de cursus wél met een echte database praten.
+ * Alle overige methodes van de interface
+ * (getLogWriter, setLoginTimeout, unwrap, ...) worden enkel overschreven omdat de Java-interface
+ * dat verplicht — ze doen inhoudelijk niets en worden nergens gebruikt.
  *
- * Alle methodes uit de interface javax.sql.DataSource worden hierin overschreven met een dummy implementatie,
- * wat geen probleem is aangezien we toch niet echt willen connecteren met een database.
+ * Vanaf lesson 3 (properties & profiles) krijgt deze klasse drie @Value-velden (username, password, url)
+ * die via een properties-bestand worden ingeladen. Ook dat is bewust nep: het dient enkel om te tonen
+ * dat property-injectie met @Value werkt, niet om er echt mee te connecteren.
  *
- * In het verder vervolg van deze oefening zal via properties de connectionstring naar de dummy-database worden ingeladen
+ * De échte (fictieve) data van de "database" zit NIET in deze klasse, maar in SchoolDatabaseStub.
  */
 public class DummyDataSource implements DataSource {
     @Override
