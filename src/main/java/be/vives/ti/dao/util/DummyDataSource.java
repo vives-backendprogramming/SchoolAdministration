@@ -1,6 +1,9 @@
 package be.vives.ti.dao.util;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -8,7 +11,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
-import java.util.logging.Logger;
 
 /**
  * BELANGRIJK — wat deze klasse WEL en NIET doet:
@@ -37,9 +39,22 @@ import java.util.logging.Logger;
  */
 @Component
 public class DummyDataSource implements DataSource {
+
+    private static final Logger log = LoggerFactory.getLogger(DummyDataSource.class);
+
+    @Value("${datasource.username}")
+    private String username;
+
+    @Value("${datasource.password}")
+    private String password;
+
+    @Value("${datasource.url}")
+    private String url;
+
     @Override
     public Connection getConnection() throws SQLException {
-        System.out.println("Een connectie naar de database wordt opgevraagd");
+        log.info("Connecting with username={}, url={}", username, url);
+        log.debug("Using password={}", password); // never log secrets at INFO or above in real code!
         return null;
     }
 
@@ -69,7 +84,7 @@ public class DummyDataSource implements DataSource {
     }
 
     @Override
-    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+    public java.util.logging.Logger getParentLogger() throws SQLFeatureNotSupportedException {
         return null;
     }
 

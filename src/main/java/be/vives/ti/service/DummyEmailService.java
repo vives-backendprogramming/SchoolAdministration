@@ -2,10 +2,12 @@ package be.vives.ti.service;
 
 import be.vives.ti.model.Student;
 import be.vives.ti.model.Teacher;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DummyEmailService {
+@Profile("dev")
+public class DummyEmailService implements EmailService {
 
     private TemplateService templateService;
 
@@ -13,6 +15,7 @@ public class DummyEmailService {
         this.templateService = templateService;
     }
 
+    @Override
     public void sendEmail(Teacher teacher, String message, Student student) {
         StringBuilder sb = new StringBuilder();
         sb.append(templateService.getHeader());

@@ -11,12 +11,12 @@ public class TeacherService {
 
     private TeacherDao teacherDao;
     private StudentService studentService;
-    private DummyEmailService dummyEmailService;
+    private EmailService emailService;
 
-    public TeacherService(TeacherDao teacherDao, StudentService studentService, DummyEmailService dummyEmailService) {
+    public TeacherService(TeacherDao teacherDao, StudentService studentService, EmailService emailService) {
         this.teacherDao = teacherDao;
         this.studentService = studentService;
-        this.dummyEmailService = dummyEmailService;
+        this.emailService = emailService;
     }
 
     public void sendMessage(Integer fromTeacherId, String message, Integer toStudentId) {
@@ -24,7 +24,7 @@ public class TeacherService {
         Student student = studentService.findById(toStudentId);
         Teacher teacher = teacherDao.get(fromTeacherId);
 
-        this.dummyEmailService.sendEmail(teacher, message, student);
+        this.emailService.sendEmail(teacher, message, student);
 
     }
 
@@ -34,7 +34,7 @@ public class TeacherService {
         List<Student> allStudentsFromClass = studentService.findAllStudentsFromClass(className);
 
         allStudentsFromClass.stream().forEach(s -> {
-            this.dummyEmailService.sendEmail(teacher, message, s);
+            this.emailService.sendEmail(teacher, message, s);
         });
     }
 }
