@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class TeacherDao {
-    private DataSource ds;
+    private DummyDataSource ds;
     private SchoolDatabaseStub db;
 
     public TeacherDao() {

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class StudentDao {
 
-    private DataSource ds;
+    private DummyDataSource ds;
     private SchoolDatabaseStub db;
 
     public StudentDao() {
