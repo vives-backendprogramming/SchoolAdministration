@@ -1,5 +1,6 @@
 package be.vives.ti.dao;
 
+import be.vives.ti.dao.util.DummyDataSource;
 import be.vives.ti.dao.util.SchoolDatabaseStub;
 import be.vives.ti.model.Teacher;
 
@@ -8,10 +9,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class TeacherDao {
-    private DataSource ds;
+    private DummyDataSource ds;
     private SchoolDatabaseStub db;
 
-    public TeacherDao(DataSource ds, SchoolDatabaseStub db) {
+    public TeacherDao(DummyDataSource ds, SchoolDatabaseStub db) {
         this.ds = ds; // nodig om een connectie op te vragen naar de (niet bestaande) database
         this.db = db; // simuleert de database
     }

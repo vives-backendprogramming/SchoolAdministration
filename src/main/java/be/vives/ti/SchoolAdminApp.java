@@ -23,7 +23,7 @@ public class SchoolAdminApp {
          * Het zijn niet langer de beans zelf die hiervoor verantwoordelijk zijn, maar de applicatie zelf. In dit geval de klasse SchoolAdminApp. (Inversion Of Control)
          * De éénmalig aangemaakte beans worden daarna geïnjecteerd in de klasses die er beroep op willen doen (Dependecy Injection)
          */
-        DataSource ds = new DummyDataSource();
+        DummyDataSource ds = new DummyDataSource();
         SchoolDatabaseStub db = new SchoolDatabaseStub();
         TeacherDao teacherDao = new TeacherDao(ds, db);
         StudentDao studentDao = new StudentDao(ds, db);
