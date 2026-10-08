@@ -20,14 +20,6 @@ import java.sql.SQLFeatureNotSupportedException;
  * getConnection() geeft altijd null terug, en dat blijft ook zo doorheen de volledige oefening
  *  — dat is bewust zo en geen fout.
  *
- * Waarom implementeert deze klasse dan toch javax.sql.DataSource (de standaard JDBC-interface
- * die elke echte databankconnectiepool, zoals HikariCP, ook implementeert)?
- * De DAO-klasses (StudentDao, TeacherDao) zijn geschreven tegen deze standaardinterface, zodat ze
- * er precies hetzelfde uitzien als DAO's die later in de cursus wél met een echte database praten.
- * Alle overige methodes van de interface
- * (getLogWriter, setLoginTimeout, unwrap, ...) worden enkel overschreven omdat de Java-interface
- * dat verplicht — ze doen inhoudelijk niets en worden nergens gebruikt.
- *
  * Vanaf lesson 3 (properties & profiles) krijgt deze klasse drie @Value-velden (username, password, url)
  * die via een properties-bestand worden ingeladen. Ook dat is bewust nep: het dient enkel om te tonen
  * dat property-injectie met @Value werkt, niet om er echt mee te connecteren.
@@ -38,7 +30,7 @@ import java.sql.SQLFeatureNotSupportedException;
  * via constructor injection in StudentDao/TeacherDao kan worden gestoken.
  */
 @Component
-public class DummyDataSource implements DataSource {
+public class DummyDataSource {
 
     private static final Logger log = LoggerFactory.getLogger(DummyDataSource.class);
 
@@ -51,50 +43,10 @@ public class DummyDataSource implements DataSource {
     @Value("${datasource.url}")
     private String url;
 
-    @Override
     public Connection getConnection() throws SQLException {
         log.info("Connecting with username={}, url={}", username, url);
         log.debug("Using password={}", password); // never log secrets at INFO or above in real code!
         return null;
     }
 
-    @Override
-    public Connection getConnection(String username, String password) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public PrintWriter getLogWriter() throws SQLException {
-        return null;
-    }
-
-    @Override
-    public void setLogWriter(PrintWriter out) throws SQLException {
-
-    }
-
-    @Override
-    public void setLoginTimeout(int seconds) throws SQLException {
-
-    }
-
-    @Override
-    public int getLoginTimeout() throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public java.util.logging.Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        return null;
-    }
-
-    @Override
-    public <T> T unwrap(Class<T> iface) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public boolean isWrapperFor(Class<?> iface) throws SQLException {
-        return false;
-    }
 }

@@ -1,5 +1,6 @@
 package be.vives.ti.dao;
 
+import be.vives.ti.dao.util.DummyDataSource;
 import be.vives.ti.dao.util.SchoolDatabaseStub;
 import be.vives.ti.model.Student;
 import org.springframework.stereotype.Repository;
@@ -14,10 +15,10 @@ import java.util.stream.Collectors;
 @Repository
 public class StudentDao {
 
-    private DataSource ds;
+    private DummyDataSource ds;
     private SchoolDatabaseStub db;
 
-    public StudentDao(DataSource ds, SchoolDatabaseStub db) {
+    public StudentDao(DummyDataSource ds, SchoolDatabaseStub db) {
         this.ds = ds; // nodig om een connectie op te vragen naar de (niet bestaande) database
         this.db = db; // simuleert de database
     }
