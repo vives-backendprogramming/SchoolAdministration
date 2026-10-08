@@ -10,10 +10,8 @@ import be.vives.ti.service.StudentService;
 import be.vives.ti.service.TeacherService;
 import be.vives.ti.service.TemplateService;
 
-import javax.sql.DataSource;
-
 public class SchoolAdminApp {
-    public static void main( String[] args ) {
+    static void main() {
         MailTemplate vivesMailTemplate = new MailTemplate("VIVES - Design your future",
                 "VIVES - all rights reserved",
                 "vives.jpg");
